@@ -1,5 +1,6 @@
 (function() {
-    function AnalyticsCtrl() {
+    function AnalyticsCtrl($scope) {
+      $scope.person = { fname: 'Clark', lname: 'Kent' };
     };
 
     angular
