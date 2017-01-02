@@ -12,6 +12,11 @@
                 controller: 'LandingCtrl as landing',
                 templateUrl: '/templates/landing.html'
             })
+            .state('analytics', {
+                url: '/analytics',
+                controller: 'AnalyticsCtrl as analytics',
+                templateUrl: '/templates/analytics.html'
+            })
             .state('album', {
                 url: '/album',
                 controller: 'AlbumCtrl as album',
