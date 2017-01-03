@@ -1,12 +1,21 @@
 module.exports = function(grunt) {
-
-    grunt.registerTask( 'default', [ 'clean', 'copy', 'hapi', 'watch'] );
-
-    grunt.registerTask( 'build', [ 'clean', 'copy' ] );
-
-    grunt.registerTask( 'run', [ 'hapi', 'watch' ]);
-
+    require('load-grunt-tasks')(grunt);
     grunt.initConfig({
+        babel: {
+          options: {
+            sourceMap: true,
+            plugins: ['transform-react-jsx'], // npm install babel-plugin-transform-react-jsx
+          },
+          jsx: {
+            files: [{
+              expand: true,
+              cwd: './app/scripts',
+              src: [ './**/*.jsx' ],
+              dest: './dist/scripts',
+              ext: '.js'
+            }]
+          }
+        },
 
         watch: {
             hapi: {
@@ -73,6 +82,12 @@ module.exports = function(grunt) {
         clean: ['./dist']
     });
 
+
+
+    grunt.registerTask( 'default', [ 'clean', 'babel', 'copy', 'hapi', 'watch'] );
+    grunt.registerTask( 'build', [ 'clean', 'babel', 'copy'] );
+
+    grunt.registerTask( 'run', [ 'hapi', 'watch' ]);
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');

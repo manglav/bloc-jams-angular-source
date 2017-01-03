@@ -5,13 +5,8 @@
       lname : React.PropTypes.string.isRequired
     },
 
-    // render: function() {
-    //   return <span>Hello {this.props.fname} {this.props.lname}</span>;
-    // }
     render: function() {
-      return React.DOM.span( null,
-        'Hello ' + this.props.fname + ' ' + this.props.lname
-      );
+      return <span>Hello {this.props.fname} {this.props.lname}</span>;
     }
 
   })
