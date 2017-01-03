@@ -21,7 +21,7 @@ module.exports = function(grunt) {
             hapi: {
                 files: [
                     './app/assets/**/*.{png,jpg,jpeg,mp3}',
-                    './app/scripts/**/*.js',
+                    './app/scripts/**/*.js*',
                     './app/styles/**/*.css',
                     './app/pages/**/*.html',
                     './app/templates/**/*.html',
@@ -29,6 +29,7 @@ module.exports = function(grunt) {
                 ],
                 tasks: [
                     'clean',
+                    'babel',
                     'copy'
                 ],
                 options: {
