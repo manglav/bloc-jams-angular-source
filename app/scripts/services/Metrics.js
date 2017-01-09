@@ -6,7 +6,9 @@
 
       registerSongPlay: function(songObj) {
         songObj['playedAt'] = new Date();
-        $rootScope.songPlays = push(songObj);
+        $rootScope.songPlays.push(songObj);
+        console.log('song name: ' + songObj.name + ' is playing');
+        console.log($rootScope.songPlays);
       },
 
       listSongsPlayed: function() {
