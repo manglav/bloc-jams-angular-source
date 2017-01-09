@@ -23,4 +23,4 @@
   angular
     .module('blocJams')
     .service('Metrics', ['$rootScope', Metrics]);
-});
+})();
