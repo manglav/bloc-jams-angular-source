@@ -1,5 +1,5 @@
 (function() {
-  var MessageComponent = React.createClass({
+  var HelloComponent = React.createClass({
     propTypes: {
       message: React.PropTypes.string.isRequired,
       name: React.PropTypes.string.isRequired,
@@ -13,6 +13,6 @@
   });
   angular
     .module('blocJams')
-    .value('MessageComponent', MessageComponent);
+    .value('HelloComponent', HelloComponent);
 
 })();
