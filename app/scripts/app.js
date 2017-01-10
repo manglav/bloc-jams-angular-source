@@ -24,8 +24,8 @@
             })
             .state('metrics', {
                 url: '/metrics',
-                controller: 'MetricsCtrl as metrics',
-                templateUrl: '/templates/metrics.html',
+                controller: 'AnalyticsCtrl as analytics',
+                templateUrl: '/templates/analytics.html',
             });
 
     };
