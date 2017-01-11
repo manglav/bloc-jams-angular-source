@@ -3,6 +3,10 @@
 
         var Fixtures = {};
 
+        debugger;
+        faker.name.findName();
+
+
         var albumPicasso = {
             name: 'The Colors',
             artist: 'Pablo Picasso',
