@@ -28,6 +28,14 @@
     var songCountObject = this.countSongs(songPlays)
     console.log(songCountObject)
 
+    var songCountData = [
+      {name: 'Blue', uv: songCountObject['Blue']},
+      {name: 'Green', uv: songCountObject['Green']},
+      {name: 'Red', uv: songCountObject['Red']},
+      {name: 'Pink', uv: songCountObject['Pink']},
+      {name: 'Magenta', uv: songCountObject['Magenta']}
+    ];
+
 
     var data = [
       {name: 'Page A', uv: 4000, pv: 2400, amt: 2400},
@@ -40,6 +48,17 @@
     ];
 
     return (
+    <div>
+
+
+      <Recharts.BarChart width={600} height={300} data={songCountData}>
+        <Recharts.XAxis dataKey="name" stroke="#8884d8" />
+        <Recharts.YAxis />
+        <Recharts.Tooltip />
+        <Recharts.Bar type="monotone" dataKey="uv" fill="#8884d8"/>
+      </Recharts.BarChart>
+
+
       <Recharts.LineChart width={600} height={300} data={data}
         margin={{top: 5, right: 30, left: 20, bottom: 5}}>
         <Recharts.XAxis dataKey="name"/>
@@ -50,6 +69,7 @@
         <Recharts.Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{r: 8}}/>
         <Recharts.Line type="monotone" dataKey="uv" stroke="#82ca9d" />
       </Recharts.LineChart>
+    </div>
 
     );
   },
