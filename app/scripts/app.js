@@ -22,8 +22,8 @@
                 controller: 'CollectionCtrl as collection',
                 templateUrl: '/templates/collection.html'
             })
-            .state('metrics', {
-                url: '/metrics',
+            .state('analytics', {
+                url: '/analytics',
                 controller: 'AnalyticsCtrl as analytics',
                 templateUrl: '/templates/analytics.html',
             });

@@ -6,9 +6,7 @@
     },
 
     render: function() {
-      return React.DOM.span(null,
-        this.props.message + ' ' + this.props.name + '!'
-      );
+      return <span>{this.props.message} {this.props.name}</span>;
     }
   });
   angular
