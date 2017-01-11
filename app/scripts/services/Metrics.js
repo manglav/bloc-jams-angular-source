@@ -2,6 +2,7 @@
   function Metrics ($rootScope) {
     $rootScope.songPlays = [];
 
+// rebuilt in hello.jsx component
     function eachSongNamePlays(songPlays) {
         var localSongPlays = songPlays;
         // create new ARRAY with the SONG NAMES
@@ -21,18 +22,18 @@
 
       registerSongPlay: function(songObj) {
         songObj['playedAt'] = new Date();
-        console.log(songObj);
+        // console.log(songObj);
         $rootScope.songPlays.push(songObj);
-        console.log('song name: ' + songObj.name + ' is playing');
-        console.log($rootScope.songPlays);
-        console.log(songObj.playedAt);
+        console.log('song name: ' + songObj.name + ' is playing and has been added to $rootScope.songPlays');
+        // console.log($rootScope.songPlays);
+        // console.log(songObj.playedAt);
         $rootScope.songCounts = eachSongNamePlays($rootScope.songPlays);
       },
 
       listSongsPlayed: function() {
         var songs = [];
         angular.forEach($rootScope.songPlays, function(song) {
-          songs.push(song.title);
+          songs.push(song.name);
         });
 
         return songs;

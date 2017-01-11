@@ -9,10 +9,25 @@
 //      return <span>{this.props.message} {this.props.name}</span>;
 //    }
 
+  countSongs(songsArray) {
+    var songCounts = {};
+    songsArray.forEach(function(x) {
+      songCounts[x] = (songCounts[x] || 0) + 1;
+    });
+    return songCounts;
+  },
+
   render: function () {
     metricsObject = this.props.data
 
-    console.log(metricsObject);
+    //returns array of song names that have been played.
+    var songPlays = metricsObject.listSongsPlayed();
+
+    //call this.countSongs above, using songPlays directly above as the param
+    //below holds object with key/value of songs and play quantity
+    var songCountObject = this.countSongs(songPlays)
+    console.log(songCountObject)
+
 
     var data = [
       {name: 'Page A', uv: 4000, pv: 2400, amt: 2400},
@@ -37,7 +52,7 @@
       </Recharts.LineChart>
 
     );
-  }
+  },
   });
   angular
     .module('blocJams')
