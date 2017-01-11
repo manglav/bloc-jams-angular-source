@@ -1,10 +1,10 @@
 (function() {
-  function AnalyticsCtrl($scope) {
-    $scope.person = {message: "hello", name: "brian"};
+  function AnalyticsCtrl(Metrics, $scope) {
+    $scope.person = {message: "hello", name: "brian", data: Metrics };
 
   };
 
   angular
     .module('blocJams')
-    .controller('AnalyticsCtrl', AnalyticsCtrl)
+    .controller('AnalyticsCtrl', ['Metrics', '$scope', AnalyticsCtrl])
 })();
