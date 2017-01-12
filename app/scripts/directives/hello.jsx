@@ -28,13 +28,10 @@
     var songCountObject = this.countSongs(songPlays)
     console.log(songCountObject)
 
-    var songCountData = [
-      {name: 'Blue', uv: songCountObject['Blue']},
-      {name: 'Green', uv: songCountObject['Green']},
-      {name: 'Red', uv: songCountObject['Red']},
-      {name: 'Pink', uv: songCountObject['Pink']},
-      {name: 'Magenta', uv: songCountObject['Magenta']}
-    ];
+    var songCountData = [];
+      for (song in songCountObject) {
+        songCountData.push({name: song, plays: songCountObject[song]});
+      }
 
 
     var data = [
@@ -50,15 +47,15 @@
     return (
     <div>
 
-
-      <Recharts.BarChart width={600} height={300} data={songCountData}>
-        <Recharts.XAxis dataKey="name" stroke="#8884d8" />
+      <h3 className="black">Song Plays:</h3>
+      <Recharts.BarChart width={1200} height={300} data={songCountData}>
+        <small><Recharts.XAxis dataKey="name" stroke="#8884d8" /></small>
         <Recharts.YAxis />
         <Recharts.Tooltip />
-        <Recharts.Bar type="monotone" dataKey="uv" fill="#8884d8"/>
+        <Recharts.Bar type="monotone" dataKey="plays" fill="#8884d8"/>
       </Recharts.BarChart>
 
-
+      <h3 className="black">Fake data</h3>
       <Recharts.LineChart width={600} height={300} data={data}
         margin={{top: 5, right: 30, left: 20, bottom: 5}}>
         <Recharts.XAxis dataKey="name"/>

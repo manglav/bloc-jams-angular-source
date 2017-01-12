@@ -8,18 +8,19 @@
         //pass through this array with Fixtures.getCollection
         //create 4 albums with different song names for each
         Fixtures.seedMusic = function() {
-          var allSongs = {name: 'Collection', albumArtUrl: '/assets/images/album_covers/01.png', songs : []};
+          var allSongs = {name: 'Your Music Collection', albumArtUrl: '/assets/images/album_covers/01.png', songs : []};
           var music = [];
 
           var songs = [];
           for (var i = 0; i < 20; i++) {
-            albumName = faker.name.findName();
+            albumName = faker.company.companyName();
+            artistName = faker.name.findName();
             songs = [
-                { name: faker.name.findName(), length: '161.71', audioUrl: '/assets/music/blue', album: albumName },
-                { name: faker.name.findName(), length: '103.96', audioUrl: '/assets/music/green', album: albumName },
-                { name: faker.name.findName(), length: '268.45', audioUrl: '/assets/music/red', album: albumName },
-                { name: faker.name.findName(), length: '153.14', audioUrl: '/assets/music/pink', album: albumName },
-                { name: faker.name.findName(), length: '374.22', audioUrl: '/assets/music/magenta', album: albumName }
+                { name: faker.name.findName(), length: '161.71', artist: artistName, audioUrl: '/assets/music/blue', album: albumName },
+                { name: faker.name.findName(), length: '103.96', artist: artistName, audioUrl: '/assets/music/green', album: albumName },
+                { name: faker.name.findName(), length: '268.45', artist: artistName, audioUrl: '/assets/music/red', album: albumName },
+                { name: faker.name.findName(), length: '153.14', artist: artistName, audioUrl: '/assets/music/pink', album: albumName },
+                { name: faker.name.findName(), length: '374.22', artist: artistName, audioUrl: '/assets/music/magenta', album: albumName }
             ];
             // console.log(album);
             songs.forEach(function(song) {
