@@ -5,33 +5,46 @@
       name: React.PropTypes.string.isRequired,
     },
 
-//    render: function() {
-//      return <span>{this.props.message} {this.props.name}</span>;
-//    }
-
-  countSongs(songsArray) {
-    var songCounts = {};
-    songsArray.forEach(function(x) {
-      songCounts[x] = (songCounts[x] || 0) + 1;
+  countItems(itemArray) {
+    var itemCount = {};
+    itemArray.forEach(function(x) {
+      itemCount[x] = (itemCount[x] || 0) + 1;
     });
-    return songCounts;
+    return itemCount;
   },
 
   render: function () {
     metricsObject = this.props.data
 
-    //returns array of song names that have been played.
+    //-----------------------------------------------------------------
+    //returns ARRAY OF SONG NAMES that have been played.
     var songPlays = metricsObject.listSongsPlayed();
 
-    //call this.countSongs above, using songPlays directly above as the param
+    //call this.countItems ABOVE, using songPlays directly above as the param
     //below holds object with key/value of songs and play quantity
-    var songCountObject = this.countSongs(songPlays)
-    console.log(songCountObject)
+    var songCountObject = this.countItems(songPlays)
+
+    //-------------------------------------------------------------------
+
+    //returns ARRAY OF ALBUMS of each song that has been playedAt
+    var albumsPlayed = metricsObject.listAlbumsPlayed();
+    var albumCountObject = this.countItems(albumsPlayed);
+    console.log(albumCountObject);
+
+    //---------------------------------------------------------------------
+
+    //  DATA FOR CHARTS DIRECTLY BELOW
+
+    var albumCountData = [];
+    for (album in albumCountObject) {
+      albumCountData.push({album: album, plays: albumCountObject[album]});
+    }
+    console.log(albumCountData);
 
     var songCountData = [];
-      for (song in songCountObject) {
-        songCountData.push({name: song, plays: songCountObject[song]});
-      }
+    for (song in songCountObject) {
+      songCountData.push({name: song, plays: songCountObject[song]});
+    }
 
 
     var data = [
@@ -44,17 +57,33 @@
       {name: 'Page G', uv: 3490, pv: 4300, amt: 2100},
     ];
 
+    //RENDERING RETURN DATA IS ALL BELOW
+    // -------------------------------------------------------------
+
     return (
     <div>
+      //ALBUM PLAYS PIE CHART
+      <h3 className="black">Album Plays</h3>
+      <Recharts.PieChart width={800} height={400}>
+      <Recharts.Pie startAngle={180} endAngle={0} data={albumCountData} cx={200} cy={200} outerRadius={80} fill="#8884d8" label/>
+      </Recharts.PieChart>
 
+
+
+      // SONG PLAYS BAR CHART
       <h3 className="black">Song Plays:</h3>
-      <Recharts.BarChart width={1200} height={300} data={songCountData}>
-        <small><Recharts.XAxis dataKey="name" stroke="#8884d8" /></small>
+      <Recharts.BarChart width={1200} height={500} data={songCountData}>
+        <Recharts.XAxis  dataKey="name" stroke="black" />
         <Recharts.YAxis />
-        <Recharts.Tooltip />
-        <Recharts.Bar type="monotone" dataKey="plays" fill="#8884d8"/>
+        <Recharts.Tooltip wrapperStyle={{width:50, backgroundColor: '#ccc'}} />
+        <Recharts.Legend width={10} wraperStyle={{color:'#f5f5f5' }} />
+        <Recharts.CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+        <Recharts.Bar type="monotone" dataKey="plays" stroke="red" fill="gray" />
       </Recharts.BarChart>
 
+      // ------------------------------------------------------------
+
+      // FAKE DATA EXAMPLE
       <h3 className="black">Fake data</h3>
       <Recharts.LineChart width={600} height={300} data={data}
         margin={{top: 5, right: 30, left: 20, bottom: 5}}>

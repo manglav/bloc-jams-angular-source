@@ -22,7 +22,7 @@
 
       registerSongPlay: function(songObj) {
         songObj['playedAt'] = new Date();
-        // console.log(songObj);
+        console.log(songObj);
         $rootScope.songPlays.push(songObj);
         console.log('song name: ' + songObj.name + ' is playing and has been added to $rootScope.songPlays');
         // console.log($rootScope.songPlays);
@@ -35,8 +35,14 @@
         angular.forEach($rootScope.songPlays, function(song) {
           songs.push(song.name);
         });
-
         return songs;
+      },
+      listAlbumsPlayed: function() {
+        var albums = [];
+        angular.forEach($rootScope.songPlays, function(song) {
+          albums.push(song.album);
+        });
+        return albums;
       }
     };
   }
