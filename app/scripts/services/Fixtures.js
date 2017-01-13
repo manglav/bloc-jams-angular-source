@@ -13,14 +13,14 @@
 
           var songs = [];
           for (var i = 0; i < 20; i++) {
-            albumName = faker.company.companyName();
+            albumName = faker.company.catchPhraseAdjective();
             artistName = faker.name.findName();
             songs = [
-                { name: faker.name.findName(), length: '161.71', artist: artistName, audioUrl: '/assets/music/blue', album: albumName },
-                { name: faker.name.findName(), length: '103.96', artist: artistName, audioUrl: '/assets/music/green', album: albumName },
-                { name: faker.name.findName(), length: '268.45', artist: artistName, audioUrl: '/assets/music/red', album: albumName },
-                { name: faker.name.findName(), length: '153.14', artist: artistName, audioUrl: '/assets/music/pink', album: albumName },
-                { name: faker.name.findName(), length: '374.22', artist: artistName, audioUrl: '/assets/music/magenta', album: albumName }
+                { name: faker.hacker.noun(), length: '161.71', artist: artistName, audioUrl: '/assets/music/blue', album: albumName },
+                { name: faker.hacker.noun(), length: '103.96', artist: artistName, audioUrl: '/assets/music/green', album: albumName },
+                { name: faker.hacker.noun(), length: '268.45', artist: artistName, audioUrl: '/assets/music/red', album: albumName },
+                { name: faker.hacker.noun(), length: '153.14', artist: artistName, audioUrl: '/assets/music/pink', album: albumName },
+                { name: faker.hacker.noun(), length: '374.22', artist: artistName, audioUrl: '/assets/music/magenta', album: albumName }
             ];
             // console.log(album);
             songs.forEach(function(song) {

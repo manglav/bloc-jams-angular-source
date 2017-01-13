@@ -39,8 +39,7 @@
     for (album in albumCountObject) {
       albumCountData.push({album: album, plays: albumCountObject[album]});
     }
-    console.log(albumCountData);
-
+    console.log(albumCountData[0]);
     var songCountData = [];
     for (song in songCountObject) {
       songCountData.push({name: song, plays: songCountObject[song]});
@@ -62,29 +61,30 @@
 
     return (
     <div>
-      //ALBUM PLAYS PIE CHART
-      <h3 className="black">Album Plays</h3>
-      <Recharts.PieChart width={800} height={400}>
-      <Recharts.Pie startAngle={180} endAngle={0} data={albumCountData} cx={200} cy={200} outerRadius={80} fill="#8884d8" label/>
-      </Recharts.PieChart>
 
-
-
-      // SONG PLAYS BAR CHART
-      <h3 className="black">Song Plays:</h3>
-      <Recharts.BarChart width={1200} height={500} data={songCountData}>
-        <Recharts.XAxis  dataKey="name" stroke="black" />
+      <h3 className="black">Album Plays:</h3>
+      <Recharts.BarChart width={1000} height={300} data={albumCountData}>
+        <Recharts.XAxis  dataKey="album" stroke="white" />
         <Recharts.YAxis />
-        <Recharts.Tooltip wrapperStyle={{width:50, backgroundColor: '#ccc'}} />
-        <Recharts.Legend width={10} wraperStyle={{color:'#f5f5f5' }} />
+        <Recharts.Tooltip wrapperStyle={{width:250, backgroundColor: 'red'}} />
+        <Recharts.Legend wrapperStyle={{color:'white'}}/>
         <Recharts.CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
         <Recharts.Bar type="monotone" dataKey="plays" stroke="red" fill="gray" />
       </Recharts.BarChart>
 
-      // ------------------------------------------------------------
 
-      // FAKE DATA EXAMPLE
-      <h3 className="black">Fake data</h3>
+      <h3 className="black">Song Plays:</h3>
+      <Recharts.BarChart width={1000} height={300} data={songCountData}>
+        <Recharts.XAxis  dataKey="name" stroke="white" />
+        <Recharts.YAxis />
+        <Recharts.Tooltip wrapperStyle={{width:250, backgroundColor: 'red'}} />
+        <Recharts.Legend wrapperStyle={{color:'white' }} />
+        <Recharts.CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+        <Recharts.Bar type="monotone" dataKey="plays" stroke="red" fill="gray" />
+      </Recharts.BarChart>
+
+
+      <h3 className="black">Fake Data:</h3>
       <Recharts.LineChart width={600} height={300} data={data}
         margin={{top: 5, right: 30, left: 20, bottom: 5}}>
         <Recharts.XAxis dataKey="name"/>
