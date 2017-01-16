@@ -1,13 +1,15 @@
 (function() {
-    function LandingCtrl($scope) {
+    function LandingCtrl($scope, Metrics) {
         this.heroTitle = "Turn the Music Up!";
 
+        this.metrics = Metrics;
+        var pageObj = {name: 'Landing', url: '/'}
         $scope.$on('$stateChangeSuccess', function () {
-          console.log('landing has loaded');
+          Metrics.registerPageLoad(pageObj);
         });
     };
 
     angular
         .module('blocJams')
-        .controller('LandingCtrl', ['$scope', LandingCtrl]);
+        .controller('LandingCtrl', ['$scope', 'Metrics', LandingCtrl]);
 })();

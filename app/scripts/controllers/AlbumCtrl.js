@@ -5,8 +5,10 @@
         this.metrics = Metrics;
         // this.seedMusic = Fixtures.seedMusic();
         // console.log('this.seedMusic');
+
+        var pageObj = {name: 'Collection', url: '/album'}
         $scope.$on('$stateChangeSuccess', function () {
-          console.log('album has loaded');
+          Metrics.registerPageLoad(pageObj);
         });
     };
 

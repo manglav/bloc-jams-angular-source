@@ -1,8 +1,11 @@
 (function() {
   function AnalyticsCtrl(Metrics, $scope) {
+    this.metrics = Metrics;
     $scope.person = {message: "hello", name: "brian", data: Metrics };
+
+    var pageObj = {name: 'Analytics', url: '/analytics'}
     $scope.$on('$stateChangeSuccess', function () {
-      console.log('analytics has loaded');
+      Metrics.registerPageLoad(pageObj);
     });
   };
 

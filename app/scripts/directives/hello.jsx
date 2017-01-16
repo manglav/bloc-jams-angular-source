@@ -16,6 +16,11 @@
   render: function () {
     metricsObject = this.props.data
 
+    // returns ARRAY of pages that have loaded
+    var pageLoads = metricsObject.listPageLoads();
+    var pageLoadObject = this.countItems(pageLoads);
+
+
     //-----------------------------------------------------------------
     //returns ARRAY OF SONG NAMES that have been played.
     var songPlays = metricsObject.listSongsPlayed();
@@ -29,22 +34,25 @@
     //returns ARRAY OF ALBUMS of each song that has been playedAt
     var albumsPlayed = metricsObject.listAlbumsPlayed();
     var albumCountObject = this.countItems(albumsPlayed);
-    console.log(albumCountObject);
 
     //---------------------------------------------------------------------
 
     //  DATA FOR CHARTS DIRECTLY BELOW
 
+    var pageCountData = [];
+    for (load in pageLoadObject) {
+      pageCountData.push({page: load, loads: pageLoadObject[load]});
+    }
+
     var albumCountData = [];
     for (album in albumCountObject) {
       albumCountData.push({album: album, plays: albumCountObject[album]});
     }
-    console.log(albumCountData[0]);
+
     var songCountData = [];
     for (song in songCountObject) {
       songCountData.push({name: song, plays: songCountObject[song]});
     }
-
 
     var data = [
       {name: 'Page A', uv: 4000, pv: 2400, amt: 2400},
@@ -61,6 +69,16 @@
 
     return (
     <div>
+
+    <h3 className="black">Page Loads:</h3>
+    <Recharts.BarChart width={600} height={300} data={pageCountData}>
+      <Recharts.XAxis  dataKey="page" stroke="white" />
+      <Recharts.YAxis />
+      <Recharts.Tooltip wrapperStyle={{width:250, backgroundColor: 'red'}} />
+      <Recharts.Legend wrapperStyle={{color:'white'}}/>
+      <Recharts.CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+      <Recharts.Bar type="monotone" dataKey="loads" stroke="red" fill="gray" />
+    </Recharts.BarChart>
 
       <h3 className="black">Album Plays:</h3>
       <Recharts.BarChart width={1000} height={300} data={albumCountData}>
