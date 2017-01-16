@@ -1,7 +1,9 @@
 (function() {
-  function Metrics ($rootScope) {
+  function Metrics ($rootScope, SongPlayer) {
     $rootScope.songPlays = [];
     $rootScope.pageLoads = [];
+    $rootScope.songEnds = [];
+
 
     function eachPageLoads(loads) {
       var localPageLoads = loads;
@@ -31,7 +33,22 @@
           songCounts[x] = (songCounts[x] || 0) + 1;
         });
         return songCounts;
+
     }
+    function eachSongEnds(songEnds) {
+      var localSongEnds = songEnds;
+      var songNames = [];
+      for (var i = 0; i < localSongEnds.length; i++) {
+        songNames.push(localSongEnds[i].name);
+      }
+      var endCounts = {};
+      songNames.forEach(function(x) {
+        endCounts[x] = (endCounts[x] || 0) + 1;
+      });
+      return endCounts;
+    }
+
+
 
     return {
       //States recorded upon load, ie landing.html recorded when it loads
@@ -59,6 +76,20 @@
         // console.log(songObj.playedAt);
         $rootScope.songCounts = eachSongNamePlays($rootScope.songPlays);
       },
+
+      registerSongEnd: function(songObj) {
+        $rootScope.songEnds.push(songObj);
+        $rootScope.endCounts = eachSongEnds($rootScope.songEnds);
+      },
+
+      listSongsEnded: function() {
+        var songsEnded = [];
+        angular.forEach($rootScope.songEnds, function(song) {
+          songsEnded.push(song.name);
+        });
+        return songsEnded;
+      },
+
 
       listSongsPlayed: function() {
         var songs = [];

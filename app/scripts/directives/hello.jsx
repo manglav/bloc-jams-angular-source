@@ -37,6 +37,10 @@
 
     //---------------------------------------------------------------------
 
+    //returns ARRAY of SONGS THAT HAVE ENDED:
+    var songsEnded = metricsObject.listSongsEnded();
+    var endCountObject = this.countItems(songsEnded);
+
     //  DATA FOR CHARTS DIRECTLY BELOW
 
     var pageCountData = [];
@@ -52,6 +56,11 @@
     var songCountData = [];
     for (song in songCountObject) {
       songCountData.push({name: song, plays: songCountObject[song]});
+    }
+
+    var songEndCountData = [];
+    for (song in endCountObject) {
+      songEndCountData.push({name: song, completions: endCountObject[song]});
     }
 
     var data = [
@@ -99,6 +108,16 @@
         <Recharts.Legend wrapperStyle={{color:'white' }} />
         <Recharts.CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
         <Recharts.Bar type="monotone" dataKey="plays" stroke="red" fill="gray" />
+      </Recharts.BarChart>
+
+      <h3 className="black">Song Completions:</h3>
+      <Recharts.BarChart width={1000} height={300} data={songEndCountData}>
+        <Recharts.XAxis  dataKey="name" stroke="white" />
+        <Recharts.YAxis />
+        <Recharts.Tooltip wrapperStyle={{width:250, backgroundColor: 'red'}} />
+        <Recharts.Legend wrapperStyle={{color:'white' }} />
+        <Recharts.CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+        <Recharts.Bar type="monotone" dataKey="completions" stroke="red" fill="gray" />
       </Recharts.BarChart>
 
 

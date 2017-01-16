@@ -1,5 +1,5 @@
 (function() {
-    function SongPlayer($rootScope, Fixtures) {
+    function SongPlayer($rootScope, Fixtures, Metrics) {
         var SongPlayer = {};
 
         //  ___     _          _           _  _   _       _ _         _
@@ -42,6 +42,11 @@
             currentBuzzObject.bind('timeupdate', function() {
                 $rootScope.$apply(function() {
                     SongPlayer.currentTime = currentBuzzObject.getTime();
+                    if (currentBuzzObject.getTime() === currentBuzzObject.getDuration()) {
+                      Metrics.registerSongEnd(song);
+                    }
+
+
                 });
             });
 
@@ -188,5 +193,5 @@
 
     angular
         .module('blocJams')
-        .factory('SongPlayer', ['$rootScope', 'Fixtures', SongPlayer]);
+        .factory('SongPlayer', ['$rootScope', 'Fixtures', 'Metrics', SongPlayer]);
 })();
