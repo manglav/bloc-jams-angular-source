@@ -79,15 +79,15 @@
     return (
     <div>
 
-    <h3 className="black">Page Loads:</h3>
-    <Recharts.BarChart width={600} height={300} data={pageCountData}>
-      <Recharts.XAxis  dataKey="page" stroke="white" />
-      <Recharts.YAxis />
-      <Recharts.Tooltip wrapperStyle={{width:250, backgroundColor: 'red'}} />
-      <Recharts.Legend wrapperStyle={{color:'white'}}/>
-      <Recharts.CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-      <Recharts.Bar type="monotone" dataKey="loads" stroke="red" fill="gray" />
-    </Recharts.BarChart>
+      <h3 className="black">Page Loads:</h3>
+      <Recharts.BarChart width={600} height={300} data={pageCountData}>
+        <Recharts.XAxis  dataKey="page" stroke="white" />
+        <Recharts.YAxis />
+        <Recharts.Tooltip wrapperStyle={{width:250, backgroundColor: 'red'}} />
+        <Recharts.Legend wrapperStyle={{color:'white'}}/>
+        <Recharts.CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+        <Recharts.Bar type="monotone" dataKey="loads" stroke="red" fill="gray" />
+      </Recharts.BarChart>
 
       <h3 className="black">Album Plays:</h3>
       <Recharts.BarChart width={1000} height={300} data={albumCountData}>
@@ -98,7 +98,6 @@
         <Recharts.CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
         <Recharts.Bar type="monotone" dataKey="plays" stroke="red" fill="gray" />
       </Recharts.BarChart>
-
 
       <h3 className="black">Song Plays:</h3>
       <Recharts.BarChart width={1000} height={300} data={songCountData}>

@@ -44,6 +44,7 @@
                     SongPlayer.currentTime = currentBuzzObject.getTime();
                     if (currentBuzzObject.getTime() === currentBuzzObject.getDuration()) {
                       Metrics.registerSongEnd(song);
+                      SongPlayer.next();
                     }
 
 
