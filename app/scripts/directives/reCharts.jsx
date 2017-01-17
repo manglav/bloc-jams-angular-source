@@ -1,5 +1,5 @@
 (function() {
-  var HelloComponent = React.createClass({
+  var ReChartsComponent = React.createClass({
     propTypes: {
       message: React.PropTypes.string.isRequired,
       name: React.PropTypes.string.isRequired,
@@ -42,9 +42,6 @@
     var endCountObject = this.countItems(songsEnded);
 
     //-------------------------------------------------------------------
-    // LAST TEN songs
-    var lastTen = metricsObject.lastTenSongs();
-    console.log(lastTen);
 
     //  DATA FOR CHARTS DIRECTLY BELOW
 
@@ -124,6 +121,6 @@
   });
   angular
     .module('blocJams')
-    .value('HelloComponent', HelloComponent);
+    .value('ReChartsComponent', ReChartsComponent);
 
 })();
