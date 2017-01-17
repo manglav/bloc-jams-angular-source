@@ -19,7 +19,7 @@
 
       return (
       <div>
-        <Reactable.Table className="stable" data={tableData}/>
+        <Reactable.Table className="beta" data={tableData}/>
 
       </div>
       )

@@ -17,6 +17,9 @@
   transform: rotate(90deg);
 }
 
-.stable {
+.beta td, beta th {
   border: 1px solid white;
+}
+.beta {
+  width: 75%;
 }
