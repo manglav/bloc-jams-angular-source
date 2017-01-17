@@ -96,8 +96,10 @@
         });
         if (lastTen.length > 10) {
           lastTen = lastTen.slice(lastTen.length - 10, lastTen.length);
+          lastTen.reverse();
           return lastTen;
         } else {
+          lastTen.reverse();
           return lastTen;
         }
       },

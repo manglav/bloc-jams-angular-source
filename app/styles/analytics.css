@@ -16,3 +16,7 @@
   -ms-transform: rotate(90deg);
   transform: rotate(90deg);
 }
+
+.stable {
+  border: 1px solid white;
+}

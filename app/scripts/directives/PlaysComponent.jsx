@@ -3,16 +3,23 @@
     render: function() {
       metricsObject = this.props.data
       var lastTen = metricsObject.lastTenSongs();
+      console.log(lastTen);
 
-      var t
+      function sortTableData(songsArray) {
+        var sortedData = [];
+        for (var i = 0; i < songsArray.length; i++) {
+          sortedData.push({'': i + 1, Song: songsArray[i].name, Artist: songsArray[i].artist, Album: songsArray[i].album, Played: songsArray[i].playedAt})
+        }
+        return sortedData;
+      }
+
+      var tableData = sortTableData(lastTen);
+      console.log(tableData);
 
 
       return (
       <div>
-        <Reactable.Table data={[
-          {Name: 'Brian Mont', Age: 28},
-          {Name: 'Kirstin Krieger', Age: 26}
-        ]}/>
+        <Reactable.Table className="stable" data={tableData}/>
 
       </div>
       )
