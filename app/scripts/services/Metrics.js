@@ -18,7 +18,6 @@
       return pageCounts;
     }
 
-
 // rebuilt in hello.jsx component
     function eachSongNamePlays(songPlays) {
         var localSongPlays = songPlays;
@@ -54,7 +53,7 @@
       //States recorded upon load, ie landing.html recorded when it loads
       registerPageLoad: function(pageObj) {
         $rootScope.pageLoads.push(pageObj);
-        console.log('page name:' + pageObj.name + ' is added to $rootScope.pageLoads');
+        // console.log('page name:' + pageObj.name + ' is added to $rootScope.pageLoads');
         $rootScope.pageCounts = eachPageLoads($rootScope.pageLoads);
       },
       listPageLoads: function() {
@@ -90,6 +89,18 @@
         return songsEnded;
       },
 
+      lastTenSongs: function() {
+        var lastTen = [];
+        angular.forEach($rootScope.songPlays, function(song) {
+          lastTen.push(song);
+        });
+        if (lastTen.length > 10) {
+          lastTen = lastTen.slice(lastTen.length - 10, lastTen.length);
+          return lastTen;
+        } else {
+          return lastTen;
+        }
+      },
 
       listSongsPlayed: function() {
         var songs = [];
