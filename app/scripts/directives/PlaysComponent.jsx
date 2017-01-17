@@ -3,10 +3,18 @@
     render: function() {
       metricsObject = this.props.data
       var lastTen = metricsObject.lastTenSongs();
-      console.log(lastTen);
+
+      var t
+
 
       return (
-        <p>Testing</p>
+      <div>
+        <Reactable.Table data={[
+          {Name: 'Brian Mont', Age: 28},
+          {Name: 'Kirstin Krieger', Age: 26}
+        ]}/>
+
+      </div>
       )
 
     },
