@@ -6,7 +6,7 @@
         // this.seedMusic = Fixtures.seedMusic();
         // console.log('this.seedMusic');
 
-        var pageObj = {name: 'Collection', url: '/album'}
+        var pageObj = {name: 'Music', url: '/album'}
         $scope.$on('$stateChangeSuccess', function () {
           Metrics.registerPageLoad(pageObj);
         });

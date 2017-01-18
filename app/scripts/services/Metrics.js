@@ -67,8 +67,8 @@
 
       //song data registered and returned below:
       registerSongPlay: function(songObj) {
-        songObj['playedAt'] = new Date();
-        // console.log(songObj);
+        songObj['playedAt'] = moment(new Date()).format('MMM Do, YYYY @ h:mm a');
+        console.log(songObj);
         $rootScope.songPlays.push(songObj);
         // console.log('song name: ' + songObj.name + ' is playing and has been added to $rootScope.songPlays');
         // console.log($rootScope.songPlays);
